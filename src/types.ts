@@ -1,20 +1,29 @@
-import type { Style, Result, StyleSchema, StyleOptions } from '@dicebear/core';
+import { JSONSchema7 } from 'json-schema';
 
 export type Core = {
-  createAvatar: (style: Style<any>, options?: StyleOptions<any>) => Result;
-  schema: StyleSchema;
+  createAvatar: (
+    style: any,
+    options?: any
+  ) => {
+    toString: () => string;
+    toJson: () => {
+      svg: string;
+      extra: Record<string, unknown>;
+    };
+  };
+  schema: JSONSchema7;
 };
 
 export type Version = {
   core: Core;
-  collection: Record<string, Style<any>>;
+  collection: Record<string, any>;
 };
 
 export type Config = {
   port: number;
   host: string;
   logger: boolean;
-  workers: number,
+  workers: number;
   versions: number[];
   png: {
     enabled: boolean;

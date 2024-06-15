@@ -1,17 +1,17 @@
-import type { Style, StyleOptions } from '@dicebear/core';
 import type { FastifyReply, FastifyRequest } from 'fastify';
 import type { Core } from '../types.js';
 import { config } from '../config.js';
+import { toJpeg, toPng } from '@dicebear/converter';
 
 export type AvatarRequest = {
   Params: {
     format: 'svg' | 'png' | 'jpg' | 'jpeg' | 'json';
-    options?: StyleOptions<any>;
+    options?: Record<string, any>;
   };
-  Querystring: StyleOptions<any>;
+  Querystring: Record<string, any>;
 };
 
-export function avatarHandler(core: Core, style: Style<any>) {
+export function avatarHandler(core: Core, style: any) {
   return async (
     request: FastifyRequest<AvatarRequest>,
     reply: FastifyReply
@@ -62,11 +62,9 @@ export function avatarHandler(core: Core, style: Style<any>) {
       case 'png':
         reply.header('Content-Type', 'image/png');
 
-        const png = await avatar
-          .png({
-            includeExif: config.png.exif,
-          })
-          .toArrayBuffer();
+        const png = await toPng(avatar.toString(), {
+          includeExif: config.png.exif,
+        }).toArrayBuffer();
 
         return Buffer.from(png);
 
@@ -74,11 +72,9 @@ export function avatarHandler(core: Core, style: Style<any>) {
       case 'jpeg':
         reply.header('Content-Type', 'image/jpeg');
 
-        const jpeg = await avatar
-          .jpeg({
-            includeExif: config.jpeg.exif,
-          })
-          .toArrayBuffer();
+        const jpeg = await toJpeg(avatar.toString(), {
+          includeExif: config.jpeg.exif,
+        }).toArrayBuffer();
 
         return Buffer.from(jpeg);
 

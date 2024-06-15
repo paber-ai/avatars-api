@@ -1,6 +1,5 @@
 import type { FastifyPluginCallback } from 'fastify';
 import type { JSONSchema7Definition } from 'json-schema';
-import type { Style } from '@dicebear/core';
 import type { Core } from '../types.js';
 import { schemaHandler } from '../handler/schema.js';
 import { parseQueryString } from '../utils/parseQueryString.js';
@@ -9,7 +8,7 @@ import { config } from '../config.js';
 
 type Options = {
   core: Core;
-  style: Style<any>;
+  style: any;
 };
 
 const paramsSchema: Record<string, JSONSchema7Definition> = {
