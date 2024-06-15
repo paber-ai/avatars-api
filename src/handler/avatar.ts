@@ -2,6 +2,7 @@ import type { FastifyReply, FastifyRequest } from 'fastify';
 import type { Core } from '../types.js';
 import { config } from '../config.js';
 import { toJpeg, toPng } from '@dicebear/converter';
+import { createRequire } from 'node:module';
 
 export type AvatarRequest = {
   Params: {
@@ -12,6 +13,13 @@ export type AvatarRequest = {
 };
 
 export function avatarHandler(core: Core, style: any) {
+  const require = createRequire(import.meta.url);
+
+  const fonts = [
+    require.resolve('../fonts/inter/inter-regular.otf'),
+    require.resolve('../fonts/inter/inter-bold.otf'),
+  ];
+
   return async (
     request: FastifyRequest<AvatarRequest>,
     reply: FastifyReply
@@ -64,6 +72,7 @@ export function avatarHandler(core: Core, style: any) {
 
         const png = await toPng(avatar.toString(), {
           includeExif: config.png.exif,
+          fonts,
         }).toArrayBuffer();
 
         return Buffer.from(png);
@@ -74,6 +83,7 @@ export function avatarHandler(core: Core, style: any) {
 
         const jpeg = await toJpeg(avatar.toString(), {
           includeExif: config.jpeg.exif,
+          fonts,
         }).toArrayBuffer();
 
         return Buffer.from(jpeg);
