@@ -2,7 +2,6 @@ import type { FastifyReply, FastifyRequest } from 'fastify';
 import type { Core } from '../types.js';
 import { config } from '../config.js';
 import { toJpeg, toPng } from '@dicebear/converter';
-import { createRequire } from 'node:module';
 
 export type AvatarRequest = {
   Params: {
@@ -13,12 +12,14 @@ export type AvatarRequest = {
 };
 
 export function avatarHandler(core: Core, style: any) {
-  const require = createRequire(import.meta.url);
+  const interRegular = new URL(
+    '../fonts/inter/inter-regular.otf',
+    import.meta.url
+  );
 
-  const fonts = [
-    require.resolve('../fonts/inter/inter-regular.otf'),
-    require.resolve('../fonts/inter/inter-bold.otf'),
-  ];
+  const interBold = new URL('../fonts/inter/inter-bold.otf', import.meta.url);
+
+  const fonts = [interRegular.pathname, interBold.pathname];
 
   return async (
     request: FastifyRequest<AvatarRequest>,
