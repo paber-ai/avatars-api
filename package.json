@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "dev": "tsx --watch ./src/server.ts",
-    "build": "tsc --build",
+    "build": "tsc --build && cp -r src/fonts dist/fonts",
     "start": "node ./dist/server.js",
     "test": "node --test tests/*.js"
   },
