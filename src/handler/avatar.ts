@@ -1,7 +1,8 @@
-import type { FastifyReply, FastifyRequest } from 'fastify';
+import type { FastifyInstance, FastifyReply, FastifyRequest } from 'fastify';
 import type { Core } from '../types.js';
 import { config } from '../config.js';
 import { toJpeg, toPng } from '@dicebear/converter';
+import { getRequiredFonts, loadAllFonts } from '../utils/fonts.js';
 
 export type AvatarRequest = {
   Params: {
@@ -11,16 +12,7 @@ export type AvatarRequest = {
   Querystring: Record<string, any>;
 };
 
-export function avatarHandler(core: Core, style: any) {
-  const interRegular = new URL(
-    '../fonts/inter/inter-regular.otf',
-    import.meta.url
-  );
-
-  const interBold = new URL('../fonts/inter/inter-bold.otf', import.meta.url);
-
-  const fonts = [interRegular.pathname, interBold.pathname];
-
+export function avatarHandler(app: FastifyInstance, core: Core, style: any) {
   return async (
     request: FastifyRequest<AvatarRequest>,
     reply: FastifyReply
@@ -73,7 +65,7 @@ export function avatarHandler(core: Core, style: any) {
 
         const png = await toPng(avatar.toString(), {
           includeExif: config.png.exif,
-          fonts,
+          fonts: getRequiredFonts(avatar.toString(), app.fonts),
         }).toArrayBuffer();
 
         return Buffer.from(png);
@@ -84,7 +76,7 @@ export function avatarHandler(core: Core, style: any) {
 
         const jpeg = await toJpeg(avatar.toString(), {
           includeExif: config.jpeg.exif,
-          fonts,
+          fonts: getRequiredFonts(avatar.toString(), app.fonts),
         }).toArrayBuffer();
 
         return Buffer.from(jpeg);

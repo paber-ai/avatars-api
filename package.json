@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "dev": "tsx --watch ./src/server.ts",
-    "build": "tsc --build && cp -r src/fonts dist/fonts",
+    "build": "tsc --build",
     "start": "node ./dist/server.js",
     "test": "node --test tests/*.js"
   },
@@ -21,21 +21,27 @@
     "@dicebear/api-9": "*",
     "@dicebear/converter": "^9.0.0",
     "@fastify/cors": "^8.4.0",
+    "@fontsource/noto-sans": "^5.0.22",
+    "@fontsource/noto-sans-jp": "^5.0.19",
+    "@fontsource/noto-sans-kr": "^5.0.19",
+    "@fontsource/noto-sans-sc": "^5.0.19",
+    "@fontsource/noto-sans-thai": "^5.0.14",
+    "@woff2/woff2-rs": "^1.0.1",
     "change-case": "^5.0.2",
     "fastify": "^4.23.2",
     "qs": "^6.11.2"
   },
   "devDependencies": {
     "@dicebear/core": "^7.0.1",
-    "@tsconfig/node18": "^1.0.2",
+    "@tsconfig/node20": "^20.1.4",
     "@types/json-schema": "^7.0.13",
-    "@types/node": "^16.11.7",
+    "@types/node": "^20.14.2",
     "@types/qs": "^6.9.8",
     "prettier": "^2.4.1",
     "tsx": "^3.13.0",
     "typescript": "^5.2.2"
   },
   "engines": {
-    "node": ">=18.0.0"
+    "node": "^18.20 || >=20.10"
   }
 }

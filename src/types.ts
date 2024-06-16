@@ -1,5 +1,11 @@
 import { JSONSchema7 } from 'json-schema';
 
+declare module 'fastify' {
+  interface FastifyInstance {
+    fonts: Font[];
+  }
+}
+
 export type Core = {
   createAvatar: (
     style: any,
@@ -49,4 +55,9 @@ export type Config = {
   cacheControl: {
     avatar: number;
   };
+};
+
+export type Font = {
+  font: string;
+  ranges: [number, number][];
 };

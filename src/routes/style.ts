@@ -1,8 +1,8 @@
-import type { FastifyPluginCallback } from 'fastify';
+import type { FastifyPluginAsync, FastifyPluginCallback } from 'fastify';
 import type { JSONSchema7Definition } from 'json-schema';
 import type { Core } from '../types.js';
 import { schemaHandler } from '../handler/schema.js';
-import { parseQueryString } from '../utils/parseQueryString.js';
+import { parseQueryString } from '../utils/query-string.js';
 import { AvatarRequest, avatarHandler } from '../handler/avatar.js';
 import { config } from '../config.js';
 
@@ -46,7 +46,7 @@ export const styleRoutes: FastifyPluginCallback<Options> = (
       querystring: optionsSchema,
       params: paramsSchema,
     },
-    handler: avatarHandler(core, style),
+    handler: avatarHandler(app, core, style),
   });
 
   app.route<AvatarRequest>({
@@ -61,7 +61,7 @@ export const styleRoutes: FastifyPluginCallback<Options> = (
       querystring: optionsSchema,
       params: paramsSchema,
     },
-    handler: avatarHandler(core, style),
+    handler: avatarHandler(app, core, style),
   });
 
   done();
