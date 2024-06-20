@@ -5,10 +5,14 @@ import cors from '@fastify/cors';
 import { parseQueryString } from './utils/query-string.js';
 import { versionRoutes } from './routes/version.js';
 import { getVersions } from './utils/versions.js';
-import { loadAllFonts } from './utils/fonts.js';
 import { Font } from './types.js';
+import { fileURLToPath } from 'url';
+import { promises as fs } from 'fs';
+import * as path from 'path';
 
-export const app = async (fonts: Font[]) => {
+const __dirname = fileURLToPath(new URL('.', import.meta.url));
+
+export const app = async () => {
   const app = fastify({
     logger: config.logger,
     querystringParser: (str) => parseQueryString(str),
@@ -21,6 +25,10 @@ export const app = async (fonts: Font[]) => {
     },
     maxParamLength: 1024,
   });
+
+  const fonts = JSON.parse(
+    await fs.readFile(path.join(__dirname, '../fonts/fonts.json'), 'utf-8')
+  ) as Font[];
 
   app.decorate('fonts', fonts);
 

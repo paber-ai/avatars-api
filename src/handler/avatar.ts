@@ -2,7 +2,7 @@ import type { FastifyInstance, FastifyReply, FastifyRequest } from 'fastify';
 import type { Core } from '../types.js';
 import { config } from '../config.js';
 import { toJpeg, toPng } from '@dicebear/converter';
-import { getRequiredFonts, loadAllFonts } from '../utils/fonts.js';
+import { getRequiredFonts } from '../utils/fonts.js';
 
 export type AvatarRequest = {
   Params: {
