@@ -40,7 +40,7 @@
     "@types/qs": "^6.9.8",
     "@woff2/woff2-rs": "^1.0.1",
     "prettier": "^2.4.1",
-    "tsx": "^3.13.0",
+    "tsx": "^4.15.6",
     "typescript": "^5.2.2"
   },
   "engines": {
