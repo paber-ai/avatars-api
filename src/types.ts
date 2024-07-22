@@ -49,6 +49,24 @@ export type Config = {
     };
     exif: boolean;
   };
+  webp: {
+    enabled: boolean;
+    size: {
+      max: number;
+      min: number;
+      default: number;
+    };
+    exif: boolean;
+  };
+  avif: {
+    enabled: boolean;
+    size: {
+      max: number;
+      min: number;
+      default: number;
+    };
+    exif: boolean;
+  };
   json: {
     enabled: boolean;
   };

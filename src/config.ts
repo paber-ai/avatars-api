@@ -23,6 +23,24 @@ export const config: Config = {
     },
     exif: Boolean(Number(process.env.JPEG_EXIF ?? 1)),
   },
+  webp: {
+    enabled: Boolean(Number(process.env.WEBP ?? 1)),
+    size: {
+      min: Number(process.env.WEBP_SIZE_MIN ?? 1),
+      max: Number(process.env.WEBP_SIZE_MAX ?? 256),
+      default: Number(process.env.WEBP_SIZE_DEFAULT ?? 128),
+    },
+    exif: Boolean(Number(process.env.WEBP_EXIF ?? 1)),
+  },
+  avif: {
+    enabled: Boolean(Number(process.env.AVIF ?? 1)),
+    size: {
+      min: Number(process.env.AVIF_SIZE_MIN ?? 1),
+      max: Number(process.env.AVIF_SIZE_MAX ?? 256),
+      default: Number(process.env.AVIF_SIZE_DEFAULT ?? 128),
+    },
+    exif: Boolean(Number(process.env.AVIF_EXIF ?? 1)),
+  },
   json: {
     enabled: Boolean(Number(process.env.JSON ?? 1)),
   },

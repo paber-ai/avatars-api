@@ -18,6 +18,8 @@ const paramsSchema: Record<string, JSONSchema7Definition> = {
       'svg',
       ...(config.png.enabled ? ['png'] : []),
       ...(config.jpeg.enabled ? ['jpg', 'jpeg'] : []),
+      ...(config.webp.enabled ? ['webp'] : []),
+      ...(config.avif.enabled ? ['avif'] : []),
       ...(config.json.enabled ? ['json'] : []),
     ],
   },

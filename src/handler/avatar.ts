@@ -1,12 +1,12 @@
 import type { FastifyInstance, FastifyReply, FastifyRequest } from 'fastify';
 import type { Core } from '../types.js';
 import { config } from '../config.js';
-import { toJpeg, toPng } from '@dicebear/converter';
+import { toJpeg, toPng, toWebp, toAvif } from '@dicebear/converter';
 import { getRequiredFonts } from '../utils/fonts.js';
 
 export type AvatarRequest = {
   Params: {
-    format: 'svg' | 'png' | 'jpg' | 'jpeg' | 'json';
+    format: 'svg' | 'png' | 'jpg' | 'jpeg' | 'webp' | 'avif' | 'json';
     options?: Record<string, any>;
   };
   Querystring: Record<string, any>;
@@ -34,6 +34,26 @@ export function avatarHandler(app: FastifyInstance, core: Core, style: any) {
       options['size'] = options['size']
         ? Math.min(
             Math.max(options['size'], config.jpeg.size.min),
+            config.jpeg.size.max
+          )
+        : config.png.size.default;
+    }
+
+    // Validate Size for WebP Format
+    if (request.params.format === 'webp') {
+      options['size'] = options['size']
+        ? Math.min(
+            Math.max(options['size'], config.webp.size.min),
+            config.jpeg.size.max
+          )
+        : config.png.size.default;
+    }
+
+    // Validate Size for Avif Format
+    if (request.params.format === 'avif') {
+      options['size'] = options['size']
+        ? Math.min(
+            Math.max(options['size'], config.avif.size.min),
             config.jpeg.size.max
           )
         : config.png.size.default;
@@ -80,6 +100,26 @@ export function avatarHandler(app: FastifyInstance, core: Core, style: any) {
         }).toArrayBuffer();
 
         return Buffer.from(jpeg);
+
+      case 'webp':
+        reply.header('Content-Type', 'image/webp');
+
+        const webp = await toWebp(avatar.toString(), {
+          includeExif: config.png.exif,
+          fonts: getRequiredFonts(avatar.toString(), app.fonts),
+        }).toArrayBuffer();
+
+        return Buffer.from(webp);
+
+      case 'avif':
+        reply.header('Content-Type', 'image/avif');
+
+        const avif = await toAvif(avatar.toString(), {
+          includeExif: config.png.exif,
+          fonts: getRequiredFonts(avatar.toString(), app.fonts),
+        }).toArrayBuffer();
+
+        return Buffer.from(avif);
 
       case 'json':
         reply.header('Content-Type', 'application/json');
