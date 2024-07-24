@@ -7,7 +7,7 @@
     "types": "./index.d.ts"
   },
   "dependencies": {
-    "@dicebear/collection": "^9.1.0",
-    "@dicebear/core": "^9.1.0"
+    "@dicebear/collection": "^9.2.0",
+    "@dicebear/core": "^9.2.0"
   }
 }
