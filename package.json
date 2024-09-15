@@ -21,26 +21,26 @@
     "@dicebear/api-7": "*",
     "@dicebear/api-8": "*",
     "@dicebear/api-9": "*",
-    "@dicebear/converter": "^9.1.0",
-    "@fastify/cors": "^8.4.0",
-    "change-case": "^5.0.2",
-    "fastify": "^4.23.2",
-    "qs": "^6.11.2"
+    "@dicebear/converter": "^9.2.2",
+    "@fastify/cors": "^9.0.1",
+    "change-case": "^5.4.4",
+    "fastify": "^4.28.1",
+    "qs": "^6.13.0"
   },
   "devDependencies": {
-    "@fontsource/noto-sans": "^5.0.22",
-    "@fontsource/noto-sans-jp": "^5.0.19",
-    "@fontsource/noto-sans-kr": "^5.0.19",
-    "@fontsource/noto-sans-sc": "^5.0.19",
-    "@fontsource/noto-sans-thai": "^5.0.14",
+    "@fontsource/noto-sans": "^5.1.0",
+    "@fontsource/noto-sans-jp": "^5.1.0",
+    "@fontsource/noto-sans-kr": "^5.1.0",
+    "@fontsource/noto-sans-sc": "^5.1.0",
+    "@fontsource/noto-sans-thai": "^5.1.0",
     "@tsconfig/node20": "^20.1.4",
-    "@types/json-schema": "^7.0.13",
-    "@types/node": "^20.14.2",
-    "@types/qs": "^6.9.8",
+    "@types/json-schema": "^7.0.15",
+    "@types/node": "^20.14.8",
+    "@types/qs": "^6.9.16",
     "@woff2/woff2-rs": "^1.0.1",
-    "prettier": "^2.4.1",
-    "tsx": "^4.15.6",
-    "typescript": "^5.2.2"
+    "prettier": "^3.3.3",
+    "tsx": "^4.19.1",
+    "typescript": "^5.6.2"
   },
   "engines": {
     "node": "^18.20 || >=20.10"
