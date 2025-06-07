@@ -1,10 +1,10 @@
-FROM node:20-slim AS build
+FROM node:24-slim AS build
 WORKDIR /app
 COPY . .
 RUN npm ci
 RUN npm run build
 
-FROM node:20-slim AS prod
+FROM node:24-slim AS prod
 EXPOSE 3000
 WORKDIR /app
 COPY --from=build /app/dist /app/dist
