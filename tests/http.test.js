@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 
 import { app } from '../dist/app.js';
 
-for (let version of [5, 6, 7]) {
+for (let version of [5, 6, 7, 8, 9]) {
   const requests = [
     {
       path: `/${version}.x/initials/svg`,
