@@ -1,5 +1,5 @@
 import type { FastifyPluginAsync, FastifyPluginCallback } from 'fastify';
-import type { JSONSchema7Definition } from 'json-schema';
+import type { JSONSchema7, JSONSchema7Definition } from 'json-schema';
 import type { Core } from '../types.js';
 import { schemaHandler } from '../handler/schema.js';
 import { parseQueryString } from '../utils/query-string.js';
@@ -11,28 +11,36 @@ type Options = {
   style: any;
 };
 
-const paramsSchema: Record<string, JSONSchema7Definition> = {
-  format: {
-    type: 'string',
-    enum: [
-      'svg',
-      ...(config.png.enabled ? ['png'] : []),
-      ...(config.jpeg.enabled ? ['jpg', 'jpeg'] : []),
-      ...(config.webp.enabled ? ['webp'] : []),
-      ...(config.avif.enabled ? ['avif'] : []),
-      ...(config.json.enabled ? ['json'] : []),
-    ],
+const paramsSchema: JSONSchema7 = {
+  $schema: 'http://json-schema.org/draft-07/schema#',
+  type: 'object',
+  properties: {
+    format: {
+      type: 'string',
+      enum: [
+        'svg',
+        ...(config.png.enabled ? ['png'] : []),
+        ...(config.jpeg.enabled ? ['jpg', 'jpeg'] : []),
+        ...(config.webp.enabled ? ['webp'] : []),
+        ...(config.avif.enabled ? ['avif'] : []),
+        ...(config.json.enabled ? ['json'] : []),
+      ],
+    },
   },
 };
 
 export const styleRoutes: FastifyPluginCallback<Options> = (
   app,
   { core, style },
-  done
+  done,
 ) => {
-  const optionsSchema: Record<string, JSONSchema7Definition> = {
-    ...core.schema.properties,
-    ...style.schema?.properties,
+  const optionsSchema: JSONSchema7 = {
+    $schema: 'http://json-schema.org/draft-07/schema#',
+    type: 'object',
+    properties: {
+      ...core.schema.properties,
+      ...style.schema?.properties,
+    },
   };
 
   app.route({
