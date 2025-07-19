@@ -30,13 +30,13 @@ export function avatarHandler(app: FastifyInstance, core: Core, style: any) {
     }
 
     // Validate Size for JPEG Format
-    if (request.params.format === 'jpg') {
+    if (request.params.format === 'jpg' || request.params.format === 'jpeg') {
       options['size'] = options['size']
         ? Math.min(
             Math.max(options['size'], config.jpeg.size.min),
             config.jpeg.size.max
           )
-        : config.png.size.default;
+        : config.jpeg.size.default;
     }
 
     // Validate Size for WebP Format
@@ -44,9 +44,9 @@ export function avatarHandler(app: FastifyInstance, core: Core, style: any) {
       options['size'] = options['size']
         ? Math.min(
             Math.max(options['size'], config.webp.size.min),
-            config.jpeg.size.max
+            config.webp.size.max
           )
-        : config.png.size.default;
+        : config.webp.size.default;
     }
 
     // Validate Size for Avif Format
@@ -54,9 +54,9 @@ export function avatarHandler(app: FastifyInstance, core: Core, style: any) {
       options['size'] = options['size']
         ? Math.min(
             Math.max(options['size'], config.avif.size.min),
-            config.jpeg.size.max
+            config.avif.size.max
           )
-        : config.png.size.default;
+        : config.avif.size.default;
     }
 
     // Define default seed
@@ -105,7 +105,7 @@ export function avatarHandler(app: FastifyInstance, core: Core, style: any) {
         reply.header('Content-Type', 'image/webp');
 
         const webp = await toWebp(avatar.toString(), {
-          includeExif: config.png.exif,
+          includeExif: config.webp.exif,
           fonts: getRequiredFonts(avatar.toString(), app.fonts),
         }).toArrayBuffer();
 
@@ -115,7 +115,7 @@ export function avatarHandler(app: FastifyInstance, core: Core, style: any) {
         reply.header('Content-Type', 'image/avif');
 
         const avif = await toAvif(avatar.toString(), {
-          includeExif: config.png.exif,
+          includeExif: config.avif.exif,
           fonts: getRequiredFonts(avatar.toString(), app.fonts),
         }).toArrayBuffer();
 
