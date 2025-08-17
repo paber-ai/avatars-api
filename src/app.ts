@@ -21,6 +21,10 @@ export const app = async () => {
 
   await app.register(cors);
 
+  app.get("/", function handler(request, reply) {
+    return { message: "OK 👍" };
+  });
+
   await app.register(versionRoutes, { versions: await getVersions() });
 
   return app;

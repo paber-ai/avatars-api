@@ -1,25 +1,9 @@
-FROM node:24-slim AS build
+FROM denoland/deno:latest
 
 WORKDIR /app
 
 COPY . .
 
-RUN npm ci
-RUN npm run build
+RUN deno install
 
-FROM node:24-slim AS prod
-
-EXPOSE 3000
-
-WORKDIR /app
-
-COPY --from=build /app/dist /app/dist
-COPY --from=build /app/fonts /app/fonts
-COPY api /app/api
-COPY LICENSE /app/LICENSE
-COPY package.json /app/package.json
-COPY package-lock.json /app/package-lock.json
-
-RUN npm ci --production
-
-CMD ["node", "./dist/server.js"]
+CMD ["deno", "task", "start"]
