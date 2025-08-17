@@ -3,7 +3,6 @@
   "specifiers": {
     "npm:@dicebear/converter@*": "9.2.4",
     "npm:@fastify/cors@*": "11.1.0",
-    "npm:@woff2/woff2-rs@*": "1.0.1",
     "npm:change-case@*": "5.4.4",
     "npm:fastify@*": "5.5.0",
     "npm:json-schema@*": "0.4.0",
@@ -287,89 +286,6 @@
     },
     "@types/luxon@3.7.1": {
       "integrity": "sha512-H3iskjFIAn5SlJU7OuxUmTEpebK6TKB8rxZShDslBMZJ5u9S//KM1sbdAisiSrqwLQncVjnpi2OK2J51h+4lsg=="
-    },
-    "@woff2/woff2-rs-android-arm-eabi@1.0.1": {
-      "integrity": "sha512-OWlTiogzbt9T7U0izS3DTB5uVZ6DzZbTMoZGMPexp6v+b+l+O+3lpAKp3PRkwWSHwVc10unZ7CKPci+cK6QHTg==",
-      "os": ["android"],
-      "cpu": ["arm"]
-    },
-    "@woff2/woff2-rs-android-arm64@1.0.1": {
-      "integrity": "sha512-8y0RE+K9PZECtkcQ6PzuN840qmgl8ovk/DBYYkvDiYjStzmbjPNcNc1O8WIZeXJGNND3wRqQDSM3mrw6HAFe5Q==",
-      "os": ["android"],
-      "cpu": ["arm64"]
-    },
-    "@woff2/woff2-rs-darwin-arm64@1.0.1": {
-      "integrity": "sha512-VLR7ZktOcE4JDxn/wdOEQlBDSGFk+xd/Zk/LHxlq6vUwmCXdLcCDJ7AjoNS6b8hVb3orAYTbpaSjAT1ZxpCrgA==",
-      "os": ["darwin"],
-      "cpu": ["arm64"]
-    },
-    "@woff2/woff2-rs-darwin-x64@1.0.1": {
-      "integrity": "sha512-UvufxQwlP51wNGqeu/i3ArV9ZyQcz7b2QP7zna9QbRbRLqoXj8dbtTpNQuz3IWEtcDjeKH6FPTWuuM5DCa3thw==",
-      "os": ["darwin"],
-      "cpu": ["x64"]
-    },
-    "@woff2/woff2-rs-freebsd-x64@1.0.1": {
-      "integrity": "sha512-ZginxtyA2IE1EwT8k8m8KrPBC5eqkLWd0/BSS64/J8qYxDThpXIn7MZeloUcr6lNu70bhl7cMWfdOAGwU8nLuw==",
-      "os": ["freebsd"],
-      "cpu": ["x64"]
-    },
-    "@woff2/woff2-rs-linux-arm-gnueabihf@1.0.1": {
-      "integrity": "sha512-VX0DAcEMogpwBk8bFO1U7843o0BV9hkcfDaQ26CsVf8/Ek3KTty3fn+KDBIufk7Ir6kG737jTQr88nuiUOvHsA==",
-      "os": ["linux"],
-      "cpu": ["arm"]
-    },
-    "@woff2/woff2-rs-linux-arm64-gnu@1.0.1": {
-      "integrity": "sha512-8WAchULadTLX1nJFzH0X3Y18eLJG0PafAU2MCz6YHuHVPdR4seg97YVCEUg4aymb/6arkGDiFpZy2HGnFOQhgQ==",
-      "os": ["linux"],
-      "cpu": ["arm64"]
-    },
-    "@woff2/woff2-rs-linux-arm64-musl@1.0.1": {
-      "integrity": "sha512-+gd5jtmzigiAGL+bqFTx/1sIPoiOhfDj4Gh8AEYVqa21GCVVGl0t3HL/FZ2qt48REBxT1oaTE6oMTcS+z+5T2w==",
-      "os": ["linux"],
-      "cpu": ["arm64"]
-    },
-    "@woff2/woff2-rs-linux-x64-gnu@1.0.1": {
-      "integrity": "sha512-eQBkP5jiV5kQki0Kk/2s2t5pgoN1NFUkEhIupMT0sJ87DhAw8kKpFJzGDkNFvgzdq+LwEEXKYpDHZjXrkIxJEg==",
-      "os": ["linux"],
-      "cpu": ["x64"]
-    },
-    "@woff2/woff2-rs-linux-x64-musl@1.0.1": {
-      "integrity": "sha512-bVWh5/hFwaSkpf8Y9FH/WSECUoa2+W2ymX0cHcJICUtgeI1QwsMoBUmXOeLLE0f4VSjNi3pEKbG1aLnlcepAwA==",
-      "os": ["linux"],
-      "cpu": ["x64"]
-    },
-    "@woff2/woff2-rs-win32-arm64-msvc@1.0.1": {
-      "integrity": "sha512-i15UUes8lmEylaD8DHeTSEKmCN4zJnzX8SMbnaNcfSPJB6VKOraSnmNBHdGbTOl3D+NluufcFrxeb8Cg3+KWTg==",
-      "os": ["win32"],
-      "cpu": ["arm64"]
-    },
-    "@woff2/woff2-rs-win32-ia32-msvc@1.0.1": {
-      "integrity": "sha512-nOmEPEeaL8bHS7IjBHjEvnrOZfAI8CljGAH1bh7Xsvsy3dUObWfpkICIQscOqC1Mq3XbnE/TbLArgTU8vUdPfQ==",
-      "os": ["win32"],
-      "cpu": ["ia32"]
-    },
-    "@woff2/woff2-rs-win32-x64-msvc@1.0.1": {
-      "integrity": "sha512-3DnoruAC1+76kvA0Xjy03YhpsYAAp0vM+5IWxjsh8XTMRhQbhMa8thkctyD1uwlS1E+qbVbfZCs4EytDy98tEA==",
-      "os": ["win32"],
-      "cpu": ["x64"]
-    },
-    "@woff2/woff2-rs@1.0.1": {
-      "integrity": "sha512-lRg8kRVdxRPDsAtUlOsJ/kkTtMeXik4h7HayNldSxbO7upQ9YcvXe2KpnQMBI2hBhESA0my8Tn2QWE9r5ebzKg==",
-      "optionalDependencies": [
-        "@woff2/woff2-rs-android-arm-eabi",
-        "@woff2/woff2-rs-android-arm64",
-        "@woff2/woff2-rs-darwin-arm64",
-        "@woff2/woff2-rs-darwin-x64",
-        "@woff2/woff2-rs-freebsd-x64",
-        "@woff2/woff2-rs-linux-arm-gnueabihf",
-        "@woff2/woff2-rs-linux-arm64-gnu",
-        "@woff2/woff2-rs-linux-arm64-musl",
-        "@woff2/woff2-rs-linux-x64-gnu",
-        "@woff2/woff2-rs-linux-x64-musl",
-        "@woff2/woff2-rs-win32-arm64-msvc",
-        "@woff2/woff2-rs-win32-ia32-msvc",
-        "@woff2/woff2-rs-win32-x64-msvc"
-      ]
     },
     "abstract-logging@2.0.1": {
       "integrity": "sha512-2BjRTZxTPvheOvGbBslFSYOUkr+SjPtOnrLP33f+VIWLzezQpZcqVg7ja3L4dBXmzzgwT+a029jRx5PCi3JuiA=="
@@ -837,7 +753,6 @@
     "dependencies": [
       "npm:@dicebear/converter@*",
       "npm:@fastify/cors@*",
-      "npm:@woff2/woff2-rs@*",
       "npm:change-case@*",
       "npm:fastify@*",
       "npm:json-schema@*",

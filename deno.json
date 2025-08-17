@@ -10,8 +10,7 @@
     "change-case": "npm:change-case",
     "fastify": "npm:fastify",
     "json-schema": "npm:json-schema",
-    "qs": "npm:qs",
-    "woff2-rs": "npm:@woff2/woff2-rs"
+    "qs": "npm:qs"
   },
   "workspace": ["./api"]
 }

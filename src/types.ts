@@ -68,8 +68,3 @@ export type Config = {
     avatar: number;
   };
 };
-
-export type Font = {
-  font: string;
-  ranges: [number, number][];
-};
