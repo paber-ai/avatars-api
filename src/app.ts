@@ -1,16 +1,9 @@
-import { config } from './config.js';
-import fastify from 'fastify';
-import cors from '@fastify/cors';
-
-import { parseQueryString } from './utils/query-string.js';
-import { versionRoutes } from './routes/version.js';
-import { getVersions } from './utils/versions.js';
-import { Font } from './types.js';
-import { fileURLToPath } from 'url';
-import { promises as fs } from 'fs';
-import * as path from 'path';
-
-const __dirname = fileURLToPath(new URL('.', import.meta.url));
+import cors from "@fastify/cors";
+import fastify from "fastify";
+import { config } from "./config.ts";
+import { versionRoutes } from "./routes/version.ts";
+import { parseQueryString } from "./utils/query-string.ts";
+import { getVersions } from "./utils/versions.ts";
 
 export const app = async () => {
   const app = fastify({
@@ -18,19 +11,13 @@ export const app = async () => {
     querystringParser: (str) => parseQueryString(str),
     ajv: {
       customOptions: {
-        coerceTypes: 'array',
+        coerceTypes: "array",
         removeAdditional: true,
         useDefaults: false,
       },
     },
     maxParamLength: 1024,
   });
-
-  const fonts = JSON.parse(
-    await fs.readFile(path.join(__dirname, '../fonts/fonts.json'), 'utf-8')
-  ) as Font[];
-
-  app.decorate('fonts', fonts);
 
   await app.register(cors);
 

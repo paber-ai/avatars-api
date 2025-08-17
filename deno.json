@@ -1,0 +1,17 @@
+{
+  "tasks": {
+    "run": "deno run -A --watch ./src/server.ts",
+    "format": "deno fmt --check"
+  },
+  "imports": {
+    "@/": "./src/",
+    "@dicebear/converter": "npm:@dicebear/converter",
+    "@fastify/cors": "npm:@fastify/cors",
+    "change-case": "npm:change-case",
+    "fastify": "npm:fastify",
+    "json-schema": "npm:json-schema",
+    "qs": "npm:qs",
+    "woff2-rs": "npm:@woff2/woff2-rs"
+  },
+  "workspace": ["./api"]
+}

@@ -1,15 +1,9 @@
-import { JSONSchema7 } from 'json-schema';
-
-declare module 'fastify' {
-  interface FastifyInstance {
-    fonts: Font[];
-  }
-}
+import { JSONSchema7 } from "json-schema";
 
 export type Core = {
   createAvatar: (
     style: any,
-    options?: any
+    options?: any,
   ) => {
     toString: () => string;
     toJson: () => {
@@ -30,7 +24,7 @@ export type Config = {
   host: string;
   logger: boolean;
   workers: number;
-  versions: number[];
+  versions: string[];
   png: {
     enabled: boolean;
     size: {

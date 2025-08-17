@@ -1,6 +1,6 @@
-import type { FastifyPluginCallback } from 'fastify';
-import type { Version } from '../types.js';
-import { collectionRoutes } from './collection.js';
+import type { Version } from "@/types.ts";
+import type { FastifyPluginCallback } from "fastify";
+import { collectionRoutes } from "./collection.ts";
 
 type Options = {
   versions: Record<string, Version>;
@@ -9,7 +9,7 @@ type Options = {
 export const versionRoutes: FastifyPluginCallback<Options> = (
   app,
   { versions },
-  done
+  done,
 ) => {
   for (const [prefix, version] of Object.entries(versions)) {
     app.register(collectionRoutes, {

@@ -1,51 +1,51 @@
-import { Config } from './types.js';
+import { Config } from "./types.ts";
 
 export const config: Config = {
-  port: Number(process.env.PORT ?? 3000),
-  host: process.env.HOST ?? '0.0.0.0',
-  logger: Boolean(Number(process.env.LOGGER) ?? 0),
-  workers: Number(process.env.WORKERS ?? 1),
+  port: 3000,
+  host: "0.0.0.0",
+  logger: true,
+  workers: 1,
   png: {
-    enabled: Boolean(Number(process.env.PNG ?? 1)),
+    enabled: true,
     size: {
-      min: Number(process.env.PNG_SIZE_MIN ?? 1),
-      max: Number(process.env.PNG_SIZE_MAX ?? 256),
-      default: Number(process.env.PNG_SIZE_DEFAULT ?? 128),
+      min: 1,
+      max: 256,
+      default: 128,
     },
-    exif: Boolean(Number(process.env.PNG_EXIF ?? 1)),
+    exif: true,
   },
   jpeg: {
-    enabled: Boolean(Number(process.env.JPEG ?? 1)),
+    enabled: true,
     size: {
-      min: Number(process.env.JPEG_SIZE_MIN ?? 1),
-      max: Number(process.env.JPEG_SIZE_MAX ?? 256),
-      default: Number(process.env.JPEG_SIZE_DEFAULT ?? 128),
+      min: 1,
+      max: 256,
+      default: 128,
     },
-    exif: Boolean(Number(process.env.JPEG_EXIF ?? 1)),
+    exif: true,
   },
   webp: {
-    enabled: Boolean(Number(process.env.WEBP ?? 1)),
+    enabled: true,
     size: {
-      min: Number(process.env.WEBP_SIZE_MIN ?? 1),
-      max: Number(process.env.WEBP_SIZE_MAX ?? 256),
-      default: Number(process.env.WEBP_SIZE_DEFAULT ?? 128),
+      min: 1,
+      max: 256,
+      default: 128,
     },
-    exif: Boolean(Number(process.env.WEBP_EXIF ?? 1)),
+    exif: true,
   },
   avif: {
-    enabled: Boolean(Number(process.env.AVIF ?? 1)),
+    enabled:true,
     size: {
-      min: Number(process.env.AVIF_SIZE_MIN ?? 1),
-      max: Number(process.env.AVIF_SIZE_MAX ?? 256),
-      default: Number(process.env.AVIF_SIZE_DEFAULT ?? 128),
+      min: 1,
+      max: 256,
+      default: 128,
     },
-    exif: Boolean(Number(process.env.AVIF_EXIF ?? 1)),
+    exif: true,
   },
   json: {
-    enabled: Boolean(Number(process.env.JSON ?? 1)),
+    enabled: true,
   },
-  versions: process.env.VERSIONS?.split(',').map(Number) ?? [5, 6, 7, 8, 9],
+  versions: ["x"],
   cacheControl: {
-    avatar: Number(process.env.CACHE_CONTROL_AVATARS ?? 60 * 60 * 24 * 365),
+    avatar: 60 * 60 * 24 * 365,
   },
 };

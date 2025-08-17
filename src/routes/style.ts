@@ -1,10 +1,10 @@
-import type { FastifyPluginAsync, FastifyPluginCallback } from 'fastify';
-import type { JSONSchema7, JSONSchema7Definition } from 'json-schema';
-import type { Core } from '../types.js';
-import { schemaHandler } from '../handler/schema.js';
-import { parseQueryString } from '../utils/query-string.js';
-import { AvatarRequest, avatarHandler } from '../handler/avatar.js';
-import { config } from '../config.js';
+import { config } from "@/config.ts";
+import { AvatarRequest, avatarHandler } from "@/handler/avatar.ts";
+import { schemaHandler } from "@/handler/schema.ts";
+import type { Core } from "@/types.ts";
+import { parseQueryString } from "@/utils/query-string.ts";
+import type { FastifyPluginCallback } from "fastify";
+import type { JSONSchema7 } from "json-schema";
 
 type Options = {
   core: Core;
@@ -12,18 +12,18 @@ type Options = {
 };
 
 const paramsSchema: JSONSchema7 = {
-  $schema: 'http://json-schema.org/draft-07/schema#',
-  type: 'object',
+  $schema: "http://json-schema.org/draft-07/schema#",
+  type: "object",
   properties: {
     format: {
-      type: 'string',
+      type: "string",
       enum: [
-        'svg',
-        ...(config.png.enabled ? ['png'] : []),
-        ...(config.jpeg.enabled ? ['jpg', 'jpeg'] : []),
-        ...(config.webp.enabled ? ['webp'] : []),
-        ...(config.avif.enabled ? ['avif'] : []),
-        ...(config.json.enabled ? ['json'] : []),
+        "svg",
+        ...(config.png.enabled ? ["png"] : []),
+        ...(config.jpeg.enabled ? ["jpg", "jpeg"] : []),
+        ...(config.webp.enabled ? ["webp"] : []),
+        ...(config.avif.enabled ? ["avif"] : []),
+        ...(config.json.enabled ? ["json"] : []),
       ],
     },
   },
@@ -35,8 +35,8 @@ export const styleRoutes: FastifyPluginCallback<Options> = (
   done,
 ) => {
   const optionsSchema: JSONSchema7 = {
-    $schema: 'http://json-schema.org/draft-07/schema#',
-    type: 'object',
+    $schema: "http://json-schema.org/draft-07/schema#",
+    type: "object",
     properties: {
       ...core.schema.properties,
       ...style.schema?.properties,
@@ -44,14 +44,14 @@ export const styleRoutes: FastifyPluginCallback<Options> = (
   };
 
   app.route({
-    method: 'GET',
-    url: '/schema.json',
+    method: "GET",
+    url: "/schema.json",
     handler: schemaHandler(optionsSchema),
   });
 
   app.route<AvatarRequest>({
-    method: 'GET',
-    url: '/:format',
+    method: "GET",
+    url: "/:format",
     schema: {
       querystring: optionsSchema,
       params: paramsSchema,
@@ -60,10 +60,10 @@ export const styleRoutes: FastifyPluginCallback<Options> = (
   });
 
   app.route<AvatarRequest>({
-    method: 'GET',
-    url: '/:format/:options',
+    method: "GET",
+    url: "/:format/:options",
     preValidation: async (request) => {
-      if (typeof request.params.options === 'string') {
+      if (typeof request.params.options === "string") {
         request.query = parseQueryString(request.params.options);
       }
     },
